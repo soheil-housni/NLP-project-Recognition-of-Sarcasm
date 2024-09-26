@@ -73,10 +73,8 @@ model.compile(loss="binary_crossentropy",optimizer="adam",metrics=["accuracy"])
 num_epochs=5
 model.fit(padded_train,y_train,epochs=num_epochs,validation_data=(padded_test,y_test),verbose=2)
 
-
-new_sentence=["granny starting to fear spiders"]
-new_sequence=tokenizer.texts_to_sequences(new_sentence)
-new_padded=pad_sequences(new_sequence,maxlen=max_length,padding=padding_type, truncating=trunc_type)
-prediction=model.predict(new_padded)
-
-print(prediction)
+def prediction(new_sentence):
+    new_sequence=tokenizer.texts_to_sequences(new_sentence)
+    new_padded=pad_sequences(new_sequence,maxlen=max_length,padding=padding_type, truncating=trunc_type)
+    prediction=model.predict(new_padded)
+return prediction
